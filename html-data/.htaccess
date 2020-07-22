@@ -1,0 +1,14 @@
+RewriteEngine on
+
+# if the directory doesn't exist, perform the rewrite
+RewriteCond %{REQUEST_FILENAME} ^(.*?/html-data/)([^/]+)(.*)$
+RewriteCond "%1%2" !-d
+RewriteRule ".?" "-" [S=1]
+
+# if the directory does exist, and it's not just the html-data directory itself, skip the rewrite
+RewriteCond %{REQUEST_FILENAME} ^(.*?/html-data/)([^/]+/)?(.*)$
+RewriteCond %2 ^.+$
+RewriteRule ".?" "-" [S=1]
+
+# Pass everything over to our script
+RewriteRule (.*) server.cgi [L]
