@@ -23,6 +23,10 @@ The folder being served, for example as an Apache userdir, is html-data.
 If this has a different name, the regular expression in .htaccess will need to be updated.
 Any request to this directory will then be handled by the handler in site.js, unless the path points to an existant subdirectory of html-data.
 
+It's up to you whether to download a Node binary and symlink it in into `bin`, or just update the shebang in `server.cgi` to use `env`'s Node.
+I chose the former because the server I was using didn't have Node installed.
+Note that the bin folder should not be within the same directory as the content to host, to avoid it inadvertently being served itself.
+
 # Inspiration
 
 My university (TU Munich) [gives free hosting](http://home.in.tum.de/) to its students, powered by Apache.
